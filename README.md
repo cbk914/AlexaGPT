@@ -16,7 +16,7 @@ In the Alexa Developer Console, click on "JSON Editor" in the left-hand menu. Up
 
 * Create an AWS Lambda function:
 
-Sign in to the AWS Management Console, navigate to the Lambda service, and click on "Create function". Choose "Author from scratch", provide a name for your function (e.g., "ChatGPTBotFunction"), and select "Python 3.8" as the runtime. In the "Function code" section, choose "Upload a .zip file" and upload a .zip file containing lambda_function.py and the openai package (you can create a .zip file by compressing the folder containing both the script and the package).
+Sign in to the AWS Management Console, navigate to the Lambda service, and click on "Create function". Choose "Author from scratch", provide a name for your function (e.g., "ChatGPTBotFunction"), and select "Python 3.9" as the runtime. In the "Function code" section, choose "Upload a .zip file" and upload a .zip file containing lambda_function.py and the openai package (you can create a .zip file by compressing the folder containing both the script and the package).
 
 * Create the IAM role for the Lambda function:
 
