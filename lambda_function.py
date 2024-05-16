@@ -78,7 +78,7 @@ def get_response_by_locale(locale, key):
 
 def generate_gpt_response(locale, chat_history, new_question):
     prompt_prefix = {
-        'en-US': "You are a helpful assistant. Answer in english.",
+        'en-US': "You are a helpful assistant.",
         'es-ES': "Tú eres un asistente útil. Responde en español."
     }
     prompt = f"{prompt_prefix.get(locale, prompt_prefix['en-US'])} {new_question}"
@@ -95,8 +95,8 @@ def generate_gpt_response(locale, chat_history, new_question):
 
 def generate_multimodal_gpt_response(locale, chat_history, new_question, image=None):
     prompt_prefix = {
-        'en-US': "You are a helpful assistant. Answer in english.",
-        'es-ES': "Tú eres un asistente útil. Responde en español."
+        'en-US': "You are a helpful assistant. ",
+        'es-ES': "Tú eres un asistente útil. Responde en español. "
     }
     if image:
         prompt_prefix['en-US'] += "Analyze the image and answer the question: "
@@ -152,10 +152,15 @@ class GptQueryIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         locale = handler_input.request_envelope.request.locale
         query = handler_input.request_envelope.request.intent.slots["query"].value
+        image = handler_input.request_envelope.request.intent.slots.get("image", {}).get("value")
         session_attr = handler_input.attributes_manager.session_attributes
         chat_history = session_attr.get("chat_history", [])
         
-        gpt_response = generate_gpt_response(locale, chat_history, query)
+        if image:
+            gpt_response = generate_multimodal_gpt_response(locale, chat_history, query, image)
+        else:
+            gpt_response = generate_gpt_response(locale, chat_history, query)
+
         if not gpt_response:
             gpt_response = get_response_by_locale(locale, 'ERROR')
         
