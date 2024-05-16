@@ -64,7 +64,7 @@ Alexa GPT Multilingual Assistant is an Alexa skill that leverages OpenAI's GPT-4
 This project is for demonstration purposes only. The author is not affiliated with OpenAI or Amazon. All product names, logos, and brands are property of their respective owners. Use of these names, logos, and brands does not imply endorsement.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the GPL 3 License. See the LICENSE file for more details.
 
 By using this project, you agree to the terms and conditions of the licenses associated with the dependencies used in this project.
 
