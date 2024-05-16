@@ -1,36 +1,73 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "chat bot",
+      "invocationName": "assistant gpt",
       "intents": [
         {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "ChatIntent",
+          "name": "GptQueryIntent",
           "slots": [
             {
-              "name": "text",
+              "name": "query",
               "type": "AMAZON.SearchQuery"
             }
           ],
           "samples": [
-            "{text}",
-            "ask {text}",
-            "tell me {text}"
+            "{query}",
+            "Ask GPT {query}",
+            "Tell me about {query}",
+            "What is {query}"
+          ]
+        },
+        {
+          "name": "GreetingIntent",
+          "samples": [
+            "Hello",
+            "Hi",
+            "Good morning",
+            "Good evening"
+          ]
+        },
+        {
+          "name": "FarewellIntent",
+          "samples": [
+            "Goodbye",
+            "Bye",
+            "See you later",
+            "Talk to you later"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "Help",
+            "What can you do",
+            "What are your features"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "Cancel",
+            "Never mind"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "Stop",
+            "Exit",
+            "Quit"
+          ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": [
+            "I don't understand",
+            "Can you repeat that",
+            "What did you say"
           ]
         }
-      ],
-      "types": []
+      ]
     }
   }
 }
