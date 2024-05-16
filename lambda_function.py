@@ -78,7 +78,7 @@ def get_response_by_locale(locale, key):
 
 def generate_gpt_response(locale, chat_history, new_question):
     prompt_prefix = {
-        'en-US': "You are a helpful assistant.",
+        'en-US': "You are a helpful assistant. Answer in english.",
         'es-ES': "Tú eres un asistente útil. Responde en español."
     }
     prompt = f"{prompt_prefix.get(locale, prompt_prefix['en-US'])} {new_question}"
@@ -87,6 +87,33 @@ def generate_gpt_response(locale, chat_history, new_question):
             model="gpt-4",
             prompt=prompt,
             max_tokens=150
+        )
+        return response.choices[0].text.strip()
+    except openai.error.OpenAIError as e:
+        logger.error(f"OpenAI API error: {e}")
+        return None
+
+def generate_multimodal_gpt_response(locale, chat_history, new_question, image=None):
+    prompt_prefix = {
+        'en-US': "You are a helpful assistant. Answer in english.",
+        'es-ES': "Tú eres un asistente útil. Responde en español."
+    }
+    if image:
+        prompt_prefix['en-US'] += "Analyze the image and answer the question: "
+        prompt_prefix['es-ES'] += "Analiza la imagen y responde la pregunta: "
+    
+    prompt = f"{prompt_prefix.get(locale, prompt_prefix['en-US'])}{new_question}"
+    
+    try:
+        # Assuming a different method for multimodal interaction
+        response = openai.Completion.create(
+            model="gpt-4-multimodal",
+            prompt=prompt,
+            max_tokens=150,
+            n=1,
+            stop=None,
+            temperature=0.7,
+            image=image  # Placeholder for image data
         )
         return response.choices[0].text.strip()
     except openai.error.OpenAIError as e:
