@@ -1,51 +1,72 @@
-# AlexaGPT
-ChatGPT-powered Alexa Skill
+# Alexa GPT Multilingual Assistant
 
-# Description:
-This Alexa Skill leverages OpenAI's ChatGPT, a state-of-the-art language model, to provide dynamic and engaging conversations to users. Simply ask Alexa questions, request information, or have a casual chat. The ChatGPT-powered Alexa Skill offers a versatile and interactive experience with a wide range of topics.
+## Description
 
-# Installation and Execution Instructions:
+Alexa GPT Multilingual Assistant is an Alexa skill that leverages OpenAI's GPT-4 to provide conversational AI capabilities in multiple languages. The skill allows users to ask questions or request information, and it responds appropriately in the user's language. This project demonstrates how to build a multilingual Alexa skill using a single interaction model and dynamically handling language-specific responses.
 
-* Create an Alexa Skill in the Alexa Developer Console:
+## Installation
 
-* Sign in to the Alexa Developer Console and click on "Create Skill". Choose a name for your skill (e.g., "ChatGPT Bot"), select the "Custom" model, and click "Create skill". Choose "Start from scratch" as your template.
+### Prerequisites
+- An Amazon Developer account.
+- AWS account for deploying the Lambda function.
+- OpenAI API key.
 
-* Set up the interaction model:
+### Steps
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/cbk914/AlexaGPT.git
+   cd AlexaGPT
 
-In the Alexa Developer Console, click on "JSON Editor" in the left-hand menu. Upload the en-US.json file provided earlier in this thread. This file defines the necessary intents and slots for a simple interaction with ChatGPT. After uploading, click on "Save Model" and then "Build Model".
+2. **Set Up AWS Lambda**
 
-* Create an AWS Lambda function:
+- Create a new Lambda function in the AWS Management Console.
+- Set the runtime to Python 3.9.
+- Add environment variables:
+  * OPENAI_API_KEY with your OpenAI API key.
+- Upload the lambda_function.zip package or deploy using the AWS CLI.
 
-Sign in to the AWS Management Console, navigate to the Lambda service, and click on "Create function". Choose "Author from scratch", provide a name for your function (e.g., "ChatGPTBotFunction"), and select "Python 3.9" as the runtime. In the "Function code" section, choose "Upload a .zip file" and upload a .zip file containing lambda_function.py and the openai package (you can create a .zip file by compressing the folder containing both the script and the package).
+3. **Configure AWS Secrets Manager (Optional)**
 
-* Create the IAM role for the Lambda function:
+- Store your OpenAI API key in AWS Secrets Manager for added security.
+- Grant your Lambda function access to the secret.
 
-In the "Execution role" section of the Lambda function creation process, choose "Create a new role with basic Lambda permissions". This will automatically create an IAM role with the necessary permissions for your Lambda function to execute.
+4. **Create Alexa Skill**
 
-* Set the OPENAI_API_KEY environment variable:
+- Go to the Alexa Developer Console.
+- Create a new skill and select "Custom" model.
+- Add languages you want to support (e.g., English and Spanish).
+- Configure the interaction model using the provided interaction_model.json.
 
-In the Lambda function's configuration, find the "Environment variables" section, click "Edit", and add a new environment variable with the key OPENAI_API_KEY and the value set to your OpenAI API key.
+5. **Link Lambda Function**
 
-* Link the Lambda function to the Alexa Skill:
+- In the Alexa Developer Console, under "Endpoint", select "AWS Lambda ARN" and enter the ARN of your Lambda function.
 
-In the Alexa Developer Console, click on "Endpoint" in the left-hand menu. Select "AWS Lambda ARN" as the "Service Endpoint Type", and enter the ARN of your Lambda function (you can find the ARN in the top right corner of your Lambda function's page in the AWS Management Console). Click "Save Endpoints".
+## Usage
 
-* Test the Alexa Skill:
+1. Invocation
 
-In the Alexa Developer Console, click on "Test" in the top menu. Enable testing for your skill by setting the "Skill testing is enabled in" dropdown to "Development". You can now interact with your ChatGPT-powered Alexa Skill using either text input or voice commands in the Test Console.
+- Invoke the skill using the configured invocation name (e.g., "assistant gpt").
+- Example commands:
+  - "Ask assistant gpt what is the weather today?"
+  - "Ask assistant gpt to tell me about the Eiffel Tower."
+  - "Ask assistant gpt qué es inteligencia artificial."
 
-That's it! Your ChatGPT-powered Alexa Skill is now ready for testing and interaction. To make the skill available to other Alexa users, you can follow the official Alexa Skill publication process.
+2. Intents
 
-# Disclaimer:
+GptQueryIntent: Ask any question.
+GreetingIntent: Say hello.
+FarewellIntent: Say goodbye.
+AMAZON.HelpIntent: Get help information.
+AMAZON.CancelIntent: Cancel the current action.
+AMAZON.StopIntent: Stop the skill.
 
-This ChatGPT-powered Alexa Skill is independently developed and maintained by its creator(s) and is not affiliated, endorsed, or sponsored by OpenAI or Amazon. The creator(s) of this skill are not representatives of OpenAI or Amazon and any views, opinions, or statements expressed within this skill do not necessarily reflect those of OpenAI or Amazon.
+## Disclaimer
+This project is for demonstration purposes only. The author is not affiliated with OpenAI or Amazon. All product names, logos, and brands are property of their respective owners. Use of these names, logos, and brands does not imply endorsement.
 
-The ChatGPT technology used within this skill is provided by OpenAI, but the usage of the technology in this skill is solely the responsibility of the skill's creator(s). Amazon Alexa is a trademark of Amazon.com, Inc. or its affiliates, and OpenAI and ChatGPT are trademarks of OpenAI Inc.
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-The ChatGPT-powered Alexa Skill is provided "as is" without any warranties or guarantees of any kind, either express or implied. The creator(s) of this skill disclaim all warranties, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+By using this project, you agree to the terms and conditions of the licenses associated with the dependencies used in this project.
 
-The information, responses, and content generated by this skill are for general informational purposes only and should not be construed as professional advice or recommendations. The creator(s) of this skill are not responsible for any errors or omissions, or for the results obtained from the use of the information provided by this skill. Users of this skill assume full responsibility for their reliance on any information or content generated by this skill.
-
-In no event shall the creator(s) of this skill be liable for any direct, indirect, incidental, consequential, or any other type of damages, including but not limited to, loss of profits, data, or goodwill, resulting from the use or inability to use this skill, even if the creator(s) have been advised of the possibility of such damages.
-
-The creator(s) of this skill do not endorse, guarantee, or assume responsibility for the accuracy or reliability of any information or content provided by this skill. The user acknowledges and agrees that the use of this skill is at their own risk and that the creator(s) are not responsible for any loss or damage resulting from the user's reliance on the information or content generated by this skill.
+## Contact
+For any questions or support, please open an issue on the GitHub repository.
