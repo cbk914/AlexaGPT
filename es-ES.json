@@ -1,0 +1,74 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "asistente gpt",
+      "intents": [
+        {
+          "name": "GptQueryIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "Qué es {query}",
+            "Háblame sobre {query}",
+            "Quiero saber sobre {query}",
+            "Dame información sobre {query}",
+            "Cuéntame sobre {query}"
+          ]
+        },
+        {
+          "name": "GreetingIntent",
+          "samples": [
+            "Hola",
+            "Buenos días",
+            "Buenas tardes",
+            "Buenas noches"
+          ]
+        },
+        {
+          "name": "FarewellIntent",
+          "samples": [
+            "Adiós",
+            "Hasta luego",
+            "Chao",
+            "Nos vemos"
+          ]
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "Cancelar",
+            "No importa"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "Ayuda",
+            "Qué puedes hacer",
+            "Cuáles son tus funciones"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "Detener",
+            "Salir",
+            "Terminar"
+          ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": [
+            "No entiendo",
+            "Puedes repetir eso",
+            "Qué dijiste"
+          ]
+        }
+      ]
+    }
+  }
+}
