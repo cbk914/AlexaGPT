@@ -53,12 +53,12 @@ Alexa GPT Multilingual Assistant is an Alexa skill that leverages OpenAI's GPT-4
 
 2. Intents
 
-GptQueryIntent: Ask any question.
-GreetingIntent: Say hello.
-FarewellIntent: Say goodbye.
-AMAZON.HelpIntent: Get help information.
-AMAZON.CancelIntent: Cancel the current action.
-AMAZON.StopIntent: Stop the skill.
+- GptQueryIntent: Ask any question.
+- GreetingIntent: Say hello.
+- FarewellIntent: Say goodbye.
+- AMAZON.HelpIntent: Get help information.
+- AMAZON.CancelIntent: Cancel the current action.
+- AMAZON.StopIntent: Stop the skill.
 
 ## Disclaimer
 This project is for demonstration purposes only. The author is not affiliated with OpenAI or Amazon. All product names, logos, and brands are property of their respective owners. Use of these names, logos, and brands does not imply endorsement.
